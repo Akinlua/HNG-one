@@ -11,20 +11,14 @@ app.get('/api', (req, res) => {
     const currentDate = new Date();
     const currentDayofWeek = daysOfWeek[currentDate.getDay()]
 
-
-    //clalculate offset in milliseconds
-    const offsetMilliseconds = Math.floor(Math.random() *240000) -120000 // +/- 2minutes
-
-    //Apply offset to current date
-    const adjustDate = new Date(currentDate.getTime() + offsetMilliseconds);
-
     //format to UTC string 
-    const formattedUTC = adjustDate.toISOString().replace(/\.\d{3}Z$/, 'Z');
-
+    const now = new Date()
+    const currentUTCtime = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds(0) ).toISOString().split('.')[0] + 'Z';
+    
     const response = {
         slack_name: slack_name,
         current_day: currentDayofWeek,
-        utc_time: formattedUTC,
+        utc_time: currentUTCtime,
         track: track,
         github_file_url: "https://github.com/Akinlua/HNG-one/blob/main/app.js",
         github_repo_url: "https://github.com/Akinlua/HNG-one",
