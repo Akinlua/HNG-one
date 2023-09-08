@@ -18,8 +18,8 @@ app.get('/api', (req, res) => {
     //Apply offset to current date
     const adjustDate = new Date(currentDate.getTime() + offsetMilliseconds);
 
-    //format to UTC string
-    const formattedUTC = adjustDate.toISOString();
+    //format to UTC string 
+    const formattedUTC = adjustDate.toISOString().replace(/\.\d{3}Z$/, 'Z');
 
     const response = {
         slack_name: slack_name,
