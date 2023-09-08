@@ -26,8 +26,8 @@ app.get('/api', (req, res) => {
         current_day: currentDayofWeek,
         utc_time: formattedUTC,
         track: track,
-        github_file_url: "",
-        github_repo_url: "",
+        github_file_url: "https://github.com/Akinlua/HNG-one/blob/main/app.js",
+        github_repo_url: "https://github.com/Akinlua/repo",
         status_code: 200
     }
     res.status(200).json(response)
